@@ -474,42 +474,69 @@ class Door:
 
 
 def build_platformer(level):
-    world_w = 2200 + level * 500
+    # Max safe horizontal gap = ~110px  (physics: jump covers ~149px max)
+    # Max safe vertical drop  = ~80px   (player can't jump UP more than ~110px)
+    # All gaps here stay within those limits so every jump is possible.
 
-    # platform layout — gets longer / trickier each level
-    base_plats = [
-        pygame.Rect(0,    360, 360, 60),
-        pygame.Rect(420,  310, 140, 22),
-        pygame.Rect(620,  270, 120, 22),
-        pygame.Rect(800,  330, 180, 22),
-        pygame.Rect(1040, 280, 140, 22),
-        pygame.Rect(1240, 240, 100, 22),
-        pygame.Rect(1400, 300, 200, 22),
-        pygame.Rect(1660, 260, 130, 22),
-        pygame.Rect(1860, 220, 100, 22),
+    # Each entry: (x, y, width, height)
+    # Y increases downward. Ground level is ~360. Higher Y = lower on screen.
+    layout = [
+        # starting ground — nice and wide so player has room to get moving
+        (0,    360, 380, 60),
+        # first few easy hops, gentle steps up
+        (430,  320, 120, 22),
+        (590,  290, 100, 22),
+        (730,  310, 110, 22),
+        (880,  270, 100, 22),
+        # mid section — slight up/down rhythm
+        (1020, 300, 120, 22),
+        (1170, 260, 100, 22),
+        (1310, 290, 110, 22),
+        (1450, 250, 100, 22),
+        # harder section — gaps get a bit wider on higher levels
+        (1590, 280, 100, 22),
+        (1730, 240, 90,  22),
+        (1860, 270, 110, 22),
+        (1990, 300, 100, 22),
+        (2110, 260, 100, 22),
+        # final approach — wide safe platform with the door on it
+        (2160, 300, 300, 70),
     ]
-    # add extra platforms for higher levels
-    for i in range(level - 1):
-        base_plats.append(pygame.Rect(2000 + i*200, 250 + i*15, 120 - i*5, 22))
 
-    # final platform near door
-    final_x = world_w - 180
-    base_plats.append(pygame.Rect(final_x - 60, 300, 280, 70))
+    # On higher levels, shrink some platform widths and add small extra hops
+    if level >= 2:
+        layout[6]  = (1170, 250, 80, 22)   # a bit trickier
+        layout[10] = (1730, 230, 75, 22)
+    if level >= 3:
+        layout[8]  = (1590, 270, 70, 22)
+        layout[12] = (2110, 245, 75, 22)
+    if level >= 4:
+        layout.insert(13, (2180, 220, 60, 22))  # extra hop before final
+    if level >= 5:
+        layout.insert(14, (2260, 250, 60, 22))  # one more tricky hop
 
-    door = Door(world_w - 110, 248)
+    base_plats = [pygame.Rect(x, y, w, h) for x, y, w, h in layout]
 
-    # enemies (more per level)
+    # Door sits on top of the final wide platform
+    final = base_plats[-1]
+    door_x = final.x + final.w // 2 - 18   # centred on final platform
+    door_y = final.y - 52                   # sitting ON the platform surface
+    door   = Door(door_x, door_y)
+
+    world_w = final.x + final.w + 60       # world ends just past the door
+
+    # Enemies — only on platforms wide enough to pace on
     enemies = []
-    usable = [p for p in base_plats if p.w >= 60]
+    usable  = [p for p in base_plats if p.w >= 70]
     for i in range(4 + level * 2):
         pl = random.choice(usable)
         enemies.append(PlatEnemy(pl))
 
-    # coins
+    # Coins scattered across all platforms
     coins = []
     for i in range(8 + level * 3):
-        pl = random.choice(base_plats)
-        cx = pl.x + random.randint(8, max(9, pl.w - 16))
+        pl  = random.choice(base_plats)
+        cx  = pl.x + random.randint(8, max(9, pl.w - 16))
         coins.append(PlatCoin(cx, pl.y - 18))
 
     return base_plats, door, enemies, coins, world_w
@@ -575,15 +602,8 @@ class PlatformerScene:
         # enter door
         if (p.x + p.W > self.door.x and p.x < self.door.x + self.door.w and
                 p.y + p.H_P > self.door.y and p.y < self.door.y + self.door.h):
-
-            # letztes Level = Endscreen
-            if GS.level == 5:
-                GS.mode = "win"
-                GS.set_msg("You escaped the final parkour!")
-            else:
-                GS.mode = "dungeon"
-                GS.set_msg(f"Entering Tomb {self.level}...")
-
+            GS.mode = "dungeon"
+            GS.set_msg(f"Entering Tomb {self.level}...")
             return
 
         # camera
@@ -1198,6 +1218,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    #ok
-    
