@@ -1,106 +1,44 @@
 # Shadow Scroll
 
-## 🎮 Game Idea
+## Spiel Idee
 
-Shadow Scroll is a 2D pixel game that combines two classic genres:
-a side-scrolling platformer and a top-down dungeon RPG.
 
-The game follows a blue-black pixel ninja, inspired by *Deepstone Jay (Ninjago)*, in a dark fantasy world filled with dragons, dungeons, and secrets.
-
----
-
-## 📖 Story
-
-The game begins with a wise old dragon, wearing a long white beard and a Sensei-style straw hat, who gives the player their mission:
-
-> Find a sacred scroll hidden inside an ancient tomb.
-
-From that moment on, the adventure begins.
-
-Only the opening scene takes place in daylight. After that, the world becomes dark and atmospheric, dominated by deep blues, eerie greens, and black tones.
-
----
-
-## 🕹️ Gameplay
-
-Shadow Scroll constantly switches between two gameplay modes:
-
-### 🏃 Platformer Mode (Side-Scrolling)
-- Run through scrolling levels
-- Jump over obstacles
-- Fight small aggressive dragons
-- Reach a wooden door at the end of each section
-
-The door leads into the dungeon mode.
-
----
-
-### 🏰 Dungeon Mode (Top-Down RPG)
-- Explore rooms from a top-down perspective
-- Collect coins and items
-- Fight stronger enemies
-- Discover secrets inside the tomb
-
----
-
-### 🛒 Shop System
-- Accessible at almost any time (except boss fights)
-- Spend coins on weapons and items
-- Helps you progress through harder sections
-
----
-
-## 💀 Game Over & Progression
-
-- The game is completed when the sacred scroll is found at the end of the final dungeon
-- Players lose a life when they die and respawn at the last checkpoint
-- In dungeon rooms, death resets you to the room entrance without losing collected progress
-- Losing all lives resets the entire level
-
----
-
-## 🔥 Inspiration / Similar Games
-
-Shadow Scroll combines elements from several well-known games:
-
-- **Super Mario Bros.** – classic side-scrolling platforming
-- **The Legend of Zelda** – top-down dungeon exploration
-- **Hollow Knight** – dark atmosphere and platforming
-- **Enter the Gungeon** – shop system and dungeon progression
-- **Shovel Knight** – pixel art platformer with bosses and upgrades
-
-👉 What makes Shadow Scroll unique is the direct combination of platforming + dungeon RPG gameplay in one connected experience.
-
----
-
-## 🎯 Target Audience
-
-- Age: 12–22
-- Players who enjoy:
-  - Pixel art games
-  - Action platformers
-  - Adventure RPG elements
-- Designed to be easy to learn but challenging to master
-
----
-
-## ⏱️ Development Plan
-
-A playable demo (3–4 levels) would take approximately:
-
-> 8–12 weeks
-
-### Development includes:
-- Pixel art style setup
-- Platformer engine
-- Dungeon system
-- Shop & currency system
-- Level design
-- Testing and balancing
-
----
-
-## 🚀 How to Run
-
-```bash
-python3 shadow_scroll.py
+Shadow Scroll ist ein 2D-Pixelspiel, das zwei klassische Spielgenres kombiniert: einen SideScrolling-Platformer und ein Top-Down-Dungeon-RPG. Die Geschichte beginnt damit, dass ein
+weiser alter Drache mit langem weissem Bart und einem Sensei-Wu-Hut (Asiatischer Kegelhut)
+dem Spieler seine Aufgabe erklärt: Er muss eine heilige Schriftrolle finden, die in einem uralten
+Grabmal versteckt liegt. Von diesem Moment an beginnt das Abenteuer.
+Der Spieler steuert einen blau-schwarzen Pixel-Ninja, inspiriert von Deepstone Jay aus Ninjago,
+jedoch mit einem stärkeren Blauton. Das gesamte Spiel ist in einer düsteren Farbpalette
+gehalten: tiefes Blau, gespenstisches Grün und Schwarz. Nur die Eröffnungsszene mit dem
+weisen Drachen spielt bei Tageslicht, bevor die Welt in Dunkelheit verfällt.
+Das Spiel wechselt ständig zwischen zwei Modi. Im Platformer-Teil läuft der Ninja durch
+scrollende Abschnitte, springt über Hindernisse und kämpft gegen kleine, aggressive Drachen.
+Am Ende jedes Abschnitts steht eine mittelalterliche Holztür, die in den Dungeon führt. Dort
+erkundet man aus der Vogelperspektive die Räume des Grabmals, sammelt Münzen und
+kämpft gegen stärkere Feinde. Beide Modi greifen direkt ineinander und erzeugen so einen
+Rhythmus, der das Spielerlebnis abwechslungsreich hält. Ausserdem gibt es einen Shop, der
+jederzeit zugänglich ist, ausser während Bosskämpfen, wo man Münzen gegen neue Waffen
+oder Items eintauschen kann.
+Das Spiel ist gewonnen, sobald man die heilige Schriftrolle am Ende des letzten Dungeons
+findet. Stirbt man unterwegs, verliert man ein Leben und startet beim letzten Checkpoint neu. Im
+Dungeon wird man bei einer Niederlage zum letzten Eingang des Raums zurückgesetzt, ohne
+den gesammelten Fortschritt zu verlieren. Wer alle Leben verbraucht, muss das gesamte Level
+von vorne beginnen.
+Fünf Spiele lassen sich gut mit Shadow Scroll vergleichen. Super Mario Bros. ist ebenfalls ein
+Plattformer mit klaren Leveln, bietet aber keinen Dungeon-Modus und hat eine viel leichtere
+Atmosphäre. The Legend of Zelda verwendet eine ähnliche Vogelperspektive für Dungeons, ist
+aber kein Plattformer und arbeitet mit einer anderen Spielstruktur. Hollow Knight hat eine
+ähnlich düstere Ästhetik und Plattformer-Elemente, trennt die Modi aber nicht klar voneinander.
+Enter the Gungeon ist ein Top-Down-Dungeon-Shooter mit Shop-System, verzichtet aber
+komplett auf Plattformer-Abschnitte und hat keine eigene Geschichte. Shovel Knight ist der
+nächste Verwandte: ein Pixel-Plattformer mit Bossen und Shop, aber ohne Top-Down-Modus.
+Was Shadow Scroll von all diesen unterscheidet, ist die direkte Verbindung beider Spielstile in
+einem einzigen Spiel mit einer klaren Erzählung.
+Die Zielgruppe sind Jugendliche und junge Erwachsene zwischen 12 und 22 Jahren. Die
+Ninjago-Einflüsse und der Retro-Pixel-Stil sprechen besonders Spieler an, die mit diesen
+Ästhetiken aufgewachsen sind. Das Spiel ist zugänglich genug für Gelegenheitsspieler, aber
+herausfordernd genug für erfahrene Gamer.
+Die Entwicklung einer spielbaren Demo mit drei bis vier Leveln würde schätzungsweise acht bis
+zwölf Wochen dauern. In dieser Zeit müsste man den Pixel-Stil festlegen, die Platformer-Engine
+bauen, den Dungeon-Modus programmieren, das Shop- und Münzsystem einbauen, die Level
+designen und am Ende alles testen und verfeinern.
